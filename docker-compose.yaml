@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  golang-dev:
+    image: golang:bullseye
+    container_name: golang-dev
+    stdin_open: true
+    tty: true
+    working_dir: /go/src
+    volumes:
+      # docker in docker
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ./code/go:/go
+      - ./init.sh:/tmp/init.sh
+    command: ["bash", "/tmp/init.sh", "golang"]
+    
+  # php-dev:
+
+  # node-dev:
+
+  #  Databases 
+  redis:
+    image: redis:alpine
+    container_name: redis
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
