@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: etcd
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      # - ETCD_ROOT_PASSWORD=!passwd
+      # - ETCD_INIT_SNAPSHOTS_DIR
+      # - ETCD_CLUSTER_DOMAIN
+      # - ETCD_START_FROM_SNAPSHOT
+      # - ETCD_DISASTER_RECOVERY
+      # - ETCD_ON_K8S
+      # - ETCD_INIT_SNAPSHOT_FILENAME
+      # - ETCDCTL_API
+      # - ETCD_LOG_LEVEL
+      # - ETCD_LISTEN_CLIENT_URLS
+      # - ETCD_ADVERTISE_CLIENT_URLS
+      # - ETCD_INITIAL_CLUSTER
+      # - ETCD_INITIAL_CLUSTER_STATE
+      # - ETCD_LISTEN_PEER_URLS
+      # - ETCD_INITIAL_ADVERTISE_PEER_URLS
+      # - ETCD_INITIAL_CLUSTER_TOKEN
+      # - ETCD_AUTO_TLS
+      # - ETCD_CERT_FILE
+      # - ETCD_KEY_FILE
+      # - ETCD_TRUSTED_CA_FILE
+      # - ETCD_CLIENT_CERT_AUTH
+      # - ETCD_PEER_AUTO_TLS
+    ports:
+      - 2379:2379
+      - 2380:2380
+    # volumes:
+    #   - ./etcd/conf/etcd.conf.yml:/opt/bitnami/etcd/conf/etcd.conf.yml
+
+
+    # --network app-tier \
+    # --env ALLOW_NONE_AUTHENTICATION=yes \
+    # --env ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379 \
+    # bitnami/etcd:latest
+
+
