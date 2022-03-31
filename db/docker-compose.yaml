@@ -2,7 +2,7 @@ version: '3'
 
 services:
   etcd:
-    image: bitnami/etcd:latest
+    image: bitnami/etcd:latest # https://github.com/bitnami/bitnami-docker-etcd
     container_name: etcd
     environment:
       - ALLOW_NONE_AUTHENTICATION=yes
