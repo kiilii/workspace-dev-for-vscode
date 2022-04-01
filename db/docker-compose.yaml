@@ -35,10 +35,31 @@ services:
     # volumes:
     #   - ./etcd/conf/etcd.conf.yml:/opt/bitnami/etcd/conf/etcd.conf.yml
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/data:/data
 
-    # --network app-tier \
-    # --env ALLOW_NONE_AUTHENTICATION=yes \
-    # --env ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379 \
-    # bitnami/etcd:latest
+  postgre:
+    image: postgres:13.6-alpine
+    container_name: postgre
+    ports:
+      - 5432:5432
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # POSTGRES_USER:
+      # POSTGRES_PASSWORD: example
+    volumes:
+      - ./postgre/data:/var/lib/postgresql/data/
+  adminer:  # adminer
+    image: adminer
+    container_name: adminer
+    ports:
+      - 15432:15432
 
-
+networks:
+  db-net:
+    driver: bridge

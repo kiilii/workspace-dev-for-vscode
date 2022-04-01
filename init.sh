@@ -6,8 +6,8 @@ function golang () {
     go env -w GOPROXY=https://goproxy.cn,direct
 
     # 安装 protobuf
-    apt-get update
-    apt-get install -y gogoprotobuf
+    # apt-get update
+    # apt-get install -y gogoprotobuf
 }
 
 hello () {

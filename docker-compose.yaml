@@ -4,6 +4,7 @@ services:
   golang-dev:
     image: golang:bullseye
     container_name: golang-dev
+
     stdin_open: true
     tty: true
     working_dir: /go/src
@@ -12,11 +13,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock 
       - ./code/go:/go
       - ./init.sh:/tmp/init.sh
-    command: ["bash", "/tmp/init.sh", "golang"]
-    
-  # php-dev:
-
-  # node-dev:
+    # command: ["bash", "/tmp/init.sh", "golang"]
 
   #  Databases 
   redis:
