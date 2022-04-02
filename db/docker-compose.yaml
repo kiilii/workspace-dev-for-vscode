@@ -34,6 +34,14 @@ services:
       - 2380:2380
     # volumes:
     #   - ./etcd/conf/etcd.conf.yml:/opt/bitnami/etcd/conf/etcd.conf.yml
+  e3w:
+    hostname: e3w
+    image: soyking/e3w:latest
+    container_name: e3w
+    ports:
+      - "12379:8080"
+    volumes:
+      - "./e3w/conf/config.ini:/app/conf/config.default.ini"
 
   redis:
     image: redis:alpine
@@ -63,3 +71,8 @@ services:
 networks:
   db-net:
     driver: bridge
+  e3wnet:
+    name: e3wnet
+  app-net:
+    external: true
+    name: app-net
