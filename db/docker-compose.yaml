@@ -2,6 +2,7 @@ version: '3'
 
 services:
   etcd:
+    hostname: etcd
     image: bitnami/etcd:latest # https://github.com/bitnami/bitnami-docker-etcd
     container_name: etcd
     environment:
@@ -44,6 +45,7 @@ services:
       - "./e3w/conf/config.ini:/app/conf/config.default.ini"
 
   redis:
+    hostname: etcd
     image: redis:alpine
     container_name: redis
     ports:
@@ -52,6 +54,7 @@ services:
       - ./redis/data:/data
 
   postgre:
+    hostname: postgre
     image: postgres:13.6-alpine
     container_name: postgre
     ports:
