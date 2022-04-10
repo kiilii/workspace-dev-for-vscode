@@ -9,22 +9,26 @@ services:
     working_dir: /go/src
     ports:
       - 8000:8000
-      - 9000:9000
+      # - 9000:9000
     volumes:
       # docker in docker
       - /var/run/docker.sock:/var/run/docker.sock 
       - ./code/go:/go
       - ./init.sh:/tmp/init.sh
-    deploy:
-      resources:
-        limits:
-          memory: 2G
-    # command: ["bash", "/tmp/init.sh", "golang"]
 
   #  Databases 
-  redis:
-    image: redis:alpine
-    container_name: redis
+  php-fpm:
+    image: php:7-fpm
+    container_name: php-fpm
+    stdin_open: true
+    tty: true
+    working_dir: /var/www/html
+    ports:
+      - 8080:8080
+    volumes:
+      # docker in docker
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ./code/php:/var/www/html
 
 # networks:
 #   backend:
