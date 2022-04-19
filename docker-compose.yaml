@@ -30,6 +30,17 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock 
       - ./code/php:/var/www/html
 
+  node:
+    image: node:17
+    container_name: node
+    stdin_open: true
+    tty: true
+    working_dir: /node
+    ports:
+      - 8090:8080
+    volumes:
+      # docker in docker
+      - ./code/node:/node
 # networks:
 #   backend:
 #     driver: bridge
