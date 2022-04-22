@@ -24,3 +24,14 @@
 --http-uwsgi-temp-path=/var/tmp/nginx/uwsgi \
 --http-scgi-temp-path=/var/tmp/nginx/scgi --with-pcre
 ```
+
+## 使用
+
+``` sh
+nginx -s reload
+nginx -s restart
+nginx -s stop
+
+# 配置文件语法测试
+nginx -t ./test.conf
+```
