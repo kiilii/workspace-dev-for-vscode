@@ -71,6 +71,12 @@ services:
     ports:
       - 15432:15432
 
+  kafka:
+    image: bitnami:kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+
 networks:
   db-net:
     driver: bridge
