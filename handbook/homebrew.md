@@ -1,5 +1,26 @@
-## homebrew 
+homebrew
+----------------
 
+安装
+--------------
+
+- 方式一
+
+``` sh
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+```
+
+如果以上方式出现 fatal: unable to access 'https://github.com/Homebrew/brew/': LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 Failed during: git fetch --force origin 的问题则推荐用以下方式
+
+- 方式二
+
+``` sh
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git
+/bin/bash install/install.sh
+```
 
 ### 换源
 
@@ -16,7 +37,7 @@ git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
 brew update
 ```
 
-- ali: https://mirrors.aliyun.com/homebrew/brew.git
-- tencent: https://mirrors.cloud.tencent.com/homebrew/brew.git
-- tsinghua: https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-- ustc: https://mirrors.ustc.edu.cn/homebrew/brew.git
+- ali: <https://mirrors.aliyun.com/homebrew/brew.git>
+- tencent: <https://mirrors.cloud.tencent.com/homebrew/brew.git>
+- tsinghua: <https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git>
+- ustc: <https://mirrors.ustc.edu.cn/homebrew/brew.git>
