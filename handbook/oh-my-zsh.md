@@ -9,6 +9,27 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
+### 配置
+
+- 插件推荐
+  - zsh-completions
+  - zsh-autosuggestions
+  - syntax-highlighting
+  - colored-man-pages
+  - extract
+``` sh
+# 
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting
+```
+
+- 主题推荐
+  - powerlevel10k
+``` sh
+# 
+```
+
 ### 常见问题解决
 
 每次打开终端都回又一串报错信息
