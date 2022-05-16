@@ -1,4 +1,4 @@
-## oh-my-zsh 
+## oh-my-zsh
 
 ### 安装
 

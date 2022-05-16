@@ -12,15 +12,19 @@ homebrew
 
 
 ```
-
-如果以上方式出现 fatal: unable to access 'https://github.com/Homebrew/brew/': LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 Failed during: git fetch --force origin 的问题则推荐用以下方式
-
 - 方式二
 
 ``` sh
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git
 /bin/bash install/install.sh
 ```
+
+
+如果以上方式出现 fatal: unable to access 'https://github.com/Homebrew/brew/': LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 Failed during: git fetch --force origin 的问题则推荐用以下方式
+
+> git config --global --add remote.origin.proxy ""
+
+
 
 ### 换源
 
