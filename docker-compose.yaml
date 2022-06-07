@@ -36,8 +36,9 @@ services:
     stdin_open: true
     tty: true
     working_dir: /node
-    ports:
-      - 8090:8080
+    # ports:
+    #   - 8090:8080
+    network_mode: "host"
     volumes:
       # docker in docker
       - ./code/node:/node
