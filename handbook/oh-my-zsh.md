@@ -12,11 +12,15 @@ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O 
 ### 配置
 
 - 插件推荐
+  - emoji
+  - dotenv
+  - macos
   - zsh-completions
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - colored-man-pages
   - extract
+
 ``` sh
 # 
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
@@ -28,8 +32,20 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 - 主题推荐
   - powerlevel10k
+
 ``` sh
 # 
+```
+
+- 字体推荐
+  - Monaco
+  - MesloLGM Nerd Font Mono
+  - [nerd-icon](https://github.com/ryanoasis/nerd-fonts)
+  
+``` sh
+# install nerd-font as a icon font
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
 ```
 
 ### 常见问题解决
