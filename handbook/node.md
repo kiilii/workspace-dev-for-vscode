@@ -22,3 +22,31 @@
 # solustion
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
+
+#### GRPC 安装
+
+需要安装两个包 npm 或 yarn 皆可
+
+- [ts-protoc-gen](npmjs.com/package/ts-protoc-gen)
+- [grpc-tools](npmjs.com/package/grpc-tools)
+
+```sh
+# xuyao 
+yarn add ts-protoc-gen # protoc-gen-ts
+yarn add grpc-tools  # grpc_tools_node_protoc_plugin
+
+# 生成命令 demo
+protoc --plugin=protoc-gen-ts=/usr/local/bin/protoc-gen-ts \
+  --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin \
+  --js_out=import_style=commonjs,binary:./src/models/grpc \
+  --ts_out=service=grpc-node,mode=grpc-js:./src/models/grpc \
+  --grpc_out=grpc_js:./src/models/grpc \
+  *.proto
+
+## gen files
+# proto/
+# |-- *.ts
+# |-- *_grpc_pb.js
+# `-- *.js
+
+```
