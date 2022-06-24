@@ -50,3 +50,16 @@ protoc --plugin=protoc-gen-ts=/usr/local/bin/protoc-gen-ts \
 # `-- *.js
 
 ```
+
+#### Build 常见问题
+
+- 编译报错
+
+``` sh
+HookWebpackError: The service is no longer running
+
+# 问题原因 esbuild目录下服务未运行，运行根目录install
+# 解决方式: 
+
+node node_modules/esbuild-loader/node_modules/esbuild/install.js
+```
