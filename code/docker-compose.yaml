@@ -13,7 +13,7 @@ services:
     volumes:
       # docker in docker
       - /var/run/docker.sock:/var/run/docker.sock 
-      - ./code/go:/go
+      - ./go:/go
       - ./init.sh:/tmp/init.sh
 
   #  Databases 
@@ -28,7 +28,7 @@ services:
     volumes:
       # docker in docker
       - /var/run/docker.sock:/var/run/docker.sock 
-      - ./code/php:/var/www/html
+      - ./php:/var/www/html
 
   node:
     image: node:17
@@ -39,7 +39,7 @@ services:
     network_mode: "host"
     volumes:
       # docker in docker
-      - ./code/node:/node
+      - ./node:/node
 # networks:
 #   backend:
 #     driver: bridge
