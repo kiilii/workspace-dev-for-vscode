@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    volumes:
+      # docker in docker
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+# networks:
+#   backend:
+#     driver: bridge
+#   frontend:
+#     driver: bridge
