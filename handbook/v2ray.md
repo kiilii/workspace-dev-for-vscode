@@ -48,7 +48,7 @@ vmess://ewoidiI6I*****g==*
 
 - proxy-groups: 代理组, 由多个代理即模式组成
     - url-test: 通过对 URL 的速度进行基准测试来选择将使用哪个代理。
-    - fallback: 按优先级选择可用策略。 通过访问 URL 来测试可用性，就像自动 url-test 组一样。
+    - fallback: 按顺序选择可用策略。 通过访问 URL 来测试可用性，就像自动 url-test 组一样。
     - load-balance：同一个eTLD+1的请求会被拨到同一个proxy。
     - select: 用于选择代理或代理组，您可以使用 RESTful API 切换代理建议在 GUI 中使用
 
@@ -77,11 +77,30 @@ allow-lan: false
 mode: rule
 log-level: warning
 
+# 透明代理开启DNS
 dns:
   enable: true
-  enhanced-mode: redir-host
+  ipv6: false
+  listen: 0.0.0.0:1053
+  enhanced-mode: redir-host # redir-host or fake-ip
+  # fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  use-hosts: true # lookup hosts and return IP record
   nameserver:
-    - 114.114.114.114
+    - 119.29.29.29 # DNSpod DNS 17ms
+    - 223.5.5.5 # 阿里 19ms
+  # 提供 fallback 时，如果GEOIP非 CN 中国时使用 fallback 解析
+  fallback:
+    - tls://8.8.8.8:853 # Google DNS over TLS
+    - tls://8.8.4.4:853 # cloudflare DNS over TLS
+    - https://1.1.1.1/dns-query # cloudflare DNS over HTTPS
+    - https://dns.google/dns-query # Google DNS over HTTPS
+  # 强制DNS解析使用`fallback`配置
+  fallback-filter:
+    # true: CN使用nameserver解析，非CN使用fallback
+    geoip: true
+    # geoip设置为false时有效： 不匹配`ipcidr`地址时会使用`nameserver`结果，匹配`ipcidr`地址时使用`fallback`结果。
+    ipcidr:
+      - 240.0.0.0/4
 tun:
   enable: true
   stack: system
