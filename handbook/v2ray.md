@@ -121,7 +121,8 @@ proxies:
     cipher: auto
     tls: true
     network: ws
-    ws-path: /
+    ws-opts:
+      path: /xxx
   # - name: "xxx-代理2"
   #   type: vmess
   #   server: server
@@ -131,7 +132,8 @@ proxies:
   #   cipher: auto
   #   tls: true
   #   network: ws
-  #   ws-path: /
+  #   ws-opts:
+  #     path: /xxx  新版 clash ws-path 配置格式变更
 proxy-groups:
   - name: PROXY
     type: url-test
