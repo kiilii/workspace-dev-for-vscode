@@ -1,9 +1,11 @@
 ## MySQL 基础
 
 ---------
+
 ### 查询
 
 - 时间范围查询
+
 ``` sql
 -- NOW() CURDATE() DATE_SUB/ADD(time, INTERVAL 1 DAY) TO_DAYS(NOW())
 -- QUARTER(time) 季度 YEAR(time) 年度
@@ -12,6 +14,7 @@ SELECT * FROM table_name WHERE TO_DAYS(date_columns) = TO_DAYS(date_columns) - 1
 ```
 
 - 索引修改
+
 ``` sql
 -- 创建
 ALTER TABLE table_name ADD INDEX/UNIQUE/FULLTEXT/PRIMARY KEY idx_xxx
@@ -27,7 +30,7 @@ DROP INDEX idx_xxx ON table_name
   - MAX
   - COUNT
   - AVG
-  - SUM 
+  - SUM
 
   聚合函数使用作用顺序
   > where > 聚合 > having
@@ -38,19 +41,25 @@ from tb_emp
 group by dept_id
 having count(dept_id)>=3
 
+- ON DUPLICATE KEY UPDATE (存在即更新)
+
+``` sql
+-- 存在即更新, 仅对主键，唯一索引起作用
+INSERT INTO test_table (`unique_key`, `name`, `age`) VALUES (10086, "tom", 24) 
+ON DUPLICATE KEY 
+UPDATE test_table SET `name` = "jerry", `age` = 23 WHERE `unique_key` = 10086
+
+```
 
 ----------
 
 ### 聚簇索引
-
 
 ### 数据页
 
 页分裂 页合并
 
 ### mvcc
-
-
 
 -------------
 
@@ -116,4 +125,4 @@ show errors;
 
 ----------
 
-### 
+###
