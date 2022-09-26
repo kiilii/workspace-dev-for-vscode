@@ -41,6 +41,16 @@ from tb_emp
 group by dept_id
 having count(dept_id)>=3
 
+- ON DUPLICATE KEY UPDATE (存在即更新)
+
+``` sql
+-- 存在即更新, 仅对主键，唯一索引起作用
+INSERT INTO test_table (`unique_key`, `name`, `age`) VALUES (10086, "tom", 24) 
+ON DUPLICATE KEY 
+UPDATE test_table SET `name` = "jerry", `age` = 23 WHERE `unique_key` = 10086
+
+```
+
 ----------
 
 ### 聚簇索引
@@ -136,3 +146,4 @@ ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DI
 |NO_AUTO_VALUE_ON_ZERO|该值影响自增长列的插入。默认设置下,插入0或NULL代表生成下一个自增长值。如果用户 希望插入的值为0,而该列又是自增长的,那么这个选项就有用了。
 |NO_AUTO_CREATE_USER|禁止GRANT创建密码为空的用户|
 |ANSI_QUOTES|启用ANSI_QUOTES后,不能用双引号来引用字符串,因为它被解释为识别符|
+###
