@@ -1,9 +1,11 @@
 ## MySQL 基础
 
 ---------
+
 ### 查询
 
 - 时间范围查询
+
 ``` sql
 -- NOW() CURDATE() DATE_SUB/ADD(time, INTERVAL 1 DAY) TO_DAYS(NOW())
 -- QUARTER(time) 季度 YEAR(time) 年度
@@ -12,6 +14,7 @@ SELECT * FROM table_name WHERE TO_DAYS(date_columns) = TO_DAYS(date_columns) - 1
 ```
 
 - 索引修改
+
 ``` sql
 -- 创建
 ALTER TABLE table_name ADD INDEX/UNIQUE/FULLTEXT/PRIMARY KEY idx_xxx
@@ -27,7 +30,7 @@ DROP INDEX idx_xxx ON table_name
   - MAX
   - COUNT
   - AVG
-  - SUM 
+  - SUM
 
   聚合函数使用作用顺序
   > where > 聚合 > having
@@ -38,19 +41,15 @@ from tb_emp
 group by dept_id
 having count(dept_id)>=3
 
-
 ----------
 
 ### 聚簇索引
-
 
 ### 数据页
 
 页分裂 页合并
 
 ### mvcc
-
-
 
 -------------
 
@@ -116,4 +115,24 @@ show errors;
 
 ----------
 
-### 
+#### SQL_MODE
+
+[SQL_MODE 参考文档](https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html)
+
+``` sql
+select @@global.SQL_MODE 
+
+ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+```
+
+|模式 |解释 |
+|-|-|
+|ONLY_FULL_GROUP_BY |GROUP BY 使用的列必须要在 SELECT 中 |
+|STRICT_TRANS_TABLES|如果事物无法插入值则中断操作|
+|NO_ZERO_IN_DATE|在严格模式下,不允许日期和月份为零|
+|NO_ZERO_DATE|设置该值,mysql数据库不允许插入零日期,插入零日期会抛出错误而不是警告。|
+|ERROR_FOR_DIVISION_BY_ZERO|在insert或update过程中，如果数据被零除，则产生错误而非警告。如果未给出该模式，那么数据被零除时Mysql返回NULL|
+|NO_ENGINE_SUBSTITUTION|如果需要的存储引擎被禁用或未编译，那么抛出错误。不设置此值时，用默认的存储引擎替代，并抛出一个异常
+|NO_AUTO_VALUE_ON_ZERO|该值影响自增长列的插入。默认设置下,插入0或NULL代表生成下一个自增长值。如果用户 希望插入的值为0,而该列又是自增长的,那么这个选项就有用了。
+|NO_AUTO_CREATE_USER|禁止GRANT创建密码为空的用户|
+|ANSI_QUOTES|启用ANSI_QUOTES后,不能用双引号来引用字符串,因为它被解释为识别符|
