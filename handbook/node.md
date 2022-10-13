@@ -51,6 +51,15 @@ protoc --plugin=protoc-gen-ts=/usr/local/bin/protoc-gen-ts \
 
 ```
 
+问题 
+protoc-gen-js: program not found or is not executable
+
+[StackOverflow](https://stackoverflow.com/questions/72572040/protoc-gen-js-program-not-found-or-is-not-executable)
+```
+brew install protobuf@3
+brew link --overwrite protobuf@3
+```
+
 #### Build 常见问题
 
 - 编译报错
